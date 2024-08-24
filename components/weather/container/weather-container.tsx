@@ -1,5 +1,6 @@
+import Ionicons from "@expo/vector-icons/Ionicons";
 import { Fragment, useEffect, useRef, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 
 type TWeatherContainerProps = {
   data: WeatherData;
@@ -27,7 +28,12 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
     <ScrollView>
       <View className="flex-1 gap-7 px-8 py-8 bg-blue-100">
         <View className="flex-1 flex-row justify-between">
-          <Text className="border-2 rounded-full border-slate-400 py-2 px-8 border-radius-8">{`${location.name}, ${location.region}`}</Text>
+          <TouchableOpacity>
+            <View className="flex-row border-2 rounded-full gap-3 border-slate-400 py-2 px-4 border-radius-8">
+              <Text>{`${location.name}, ${location.region}`}</Text>
+              <Ionicons name="chevron-down" size={16} />
+            </View>
+          </TouchableOpacity>
           <Text className="border-2 rounded-full border-slate-400 py-2 px-8 border-radius-8">
             {current.timeAgo}
           </Text>
