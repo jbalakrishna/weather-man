@@ -1,7 +1,7 @@
 import { Location } from "@/components/location/types";
 import { mapForecastResponse } from "./mappers";
 
-const BASE_URL = "http://api.weatherapi.com/v1";
+const BASE_URL = "https://api.weatherapi.com/v1";
 const API_KEY = "63cf2e53149145b58da164536242308";
 
 type LocationRequest = {

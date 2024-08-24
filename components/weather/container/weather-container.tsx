@@ -15,7 +15,7 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
   const {
     data: { current, forecast, location },
   } = props;
-
+  console.log("WEATHER_MAAAN", props.data);
   const scrollRef = useRef<ScrollView>(null);
   const [scrollToX, setScrollToX] = useState<number>(-1);
   const [locationModalVisible, setLocationModalVisible] =

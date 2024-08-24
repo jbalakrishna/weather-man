@@ -19,11 +19,12 @@ const LocationDetector = () => {
 
       try {
         let location = await Location.getCurrentPositionAsync({});
-        store.setLocation({
+        const storingLocation = {
           longitude: location.coords.longitude,
           latitude: location.coords.latitude,
-        });
-        store.fetchWeather();
+        };
+        store.setLocation(storingLocation);
+        await store.fetchWeather(storingLocation);
       } catch (error) {
         setError(ErrorGeneric);
       }

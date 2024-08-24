@@ -33,8 +33,6 @@ export const mapForecastResponse = (data: any): WeatherData => {
     ),
   };
 
-  console.log(currentData.condition);
-
   const hoursData = get(forecast, "forecastday.0.hour", []).map(
     (hourItem: any) => {
       const hourLevelData = pick(hourItem, [

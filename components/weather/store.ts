@@ -12,7 +12,7 @@ interface WeatherStore {
 
   setLocation: (location: Location) => void;
 
-  fetchWeather: () => Promise<void>;
+  fetchWeather: (freshLocation?: Location) => Promise<void>;
 
   clearWeather: () => void;
 }
@@ -29,13 +29,15 @@ const useWeatherStore = create<WeatherStore>(
         set({ location });
       },
 
-      fetchWeather: async () => {
+      fetchWeather: async (freshLocation?: Location) => {
         set({ loading: true, error: null });
 
         try {
-          const payload = get().location;
+          const payload = freshLocation || get().location;
+
           if (!payload) return;
           const weatherForeCastResponse = await fetchWeatherForecast(payload);
+
           set({ weather: weatherForeCastResponse, loading: false });
         } catch (error: any) {
           set({ error: error.message, loading: false });
