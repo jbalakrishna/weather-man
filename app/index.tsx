@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
+import LocationDetector from "../components/location/location-detector";
+import WeatherContainer from "../components/weather/container/weather-container";
+import useWeatherStore from "../components/weather/store";
+import "./global.css";
 
-export default function Index() {
+export default function App() {
+  const store = useWeatherStore();
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+    <View className="flex-1 bg-white dark:bg-black">
+      <LocationDetector />
+      {store.weather && <WeatherContainer data={store.weather} />}
     </View>
   );
 }
