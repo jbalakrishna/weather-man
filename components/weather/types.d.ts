@@ -2,6 +2,8 @@ type WeatherCondition = {
   text: string;
   icon: string;
   code: number;
+  dayColors?: string[];
+  nightColors?: string[];
 };
 
 type CurrentWeather = {
@@ -115,4 +117,12 @@ type WeatherData = {
     day: DayWeather[];
     hour: HourWeather[];
   };
+};
+
+type ConditionAttributes = {
+  code: number;
+  text: string;
+  icon: string;
+  dayColors: string[];
+  nightColors: string[];
 };

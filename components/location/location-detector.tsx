@@ -3,6 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import * as Location from "expo-location";
 import useWeatherStore from "../weather/store";
 import { ErrorDenied, ErrorGeneric } from "./constants";
+import { LocationError } from "./types";
 
 const LocationDetector = () => {
   const [error, setError] = useState<LocationError | null>(null);
@@ -28,13 +29,6 @@ const LocationDetector = () => {
       }
     })();
   }, []);
-
-  let text = "Waiting...";
-  if (error) {
-    text = error.message;
-  } else if (location) {
-    text = `Latitude: ${location.latitude}, Longitude: ${location.longitude}`;
-  }
 
   return <Fragment></Fragment>;
 };

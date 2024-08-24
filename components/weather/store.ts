@@ -2,11 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { create, StateCreator } from "zustand";
 import { persist } from "zustand/middleware";
 import { fetchWeatherForecast } from "../../lib/network/apis";
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
+import { Location } from "../location/types";
 
 interface WeatherStore {
   weather: WeatherData | null;

@@ -1,4 +1,5 @@
 import {
+  ConditionAttributesColorData,
   CurrentWeatherAttributesImperial,
   CurrentWeatherAttributesUniversal,
   DayWeatherAttributesImperial,
@@ -6,7 +7,7 @@ import {
   HourWeatherAttributesImperial,
   HourWeatherAttributesUniversal,
 } from "@/components/weather/constants";
-import { get, pick, values } from "lodash";
+import { find, get, pick, values } from "lodash";
 import moment from "moment-timezone";
 
 export const mapForecastResponse = (data: any): WeatherData => {
@@ -22,6 +23,17 @@ export const mapForecastResponse = (data: any): WeatherData => {
     24;
 
   currentData.timeHour = 11;
+  currentData.condition = {
+    ...currentData.condition,
+    icon: `https:${current.condition.icon}`.replace("64x64", "128x128"),
+
+    ...find(
+      ConditionAttributesColorData,
+      (data) => data.code == current.condition.code
+    ),
+  };
+
+  console.log(currentData.condition);
 
   const hoursData = get(forecast, "forecastday.0.hour", []).map(
     (hourItem: any) => {

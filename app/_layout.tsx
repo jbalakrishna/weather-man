@@ -8,7 +8,7 @@ export default function RootLayout() {
         title: "",
         headerRight: () => <Ionicons name="menu" size={24} color="black" />,
         headerStyle: {
-          backgroundColor: "#bfdbfe",
+          backgroundColor: "#fff",
         },
       }}
     >

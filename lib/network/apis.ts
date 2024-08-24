@@ -1,3 +1,4 @@
+import { Location } from "@/components/location/types";
 import { mapForecastResponse } from "./mappers";
 
 const BASE_URL = "http://api.weatherapi.com/v1";
@@ -29,4 +30,14 @@ export async function fetchWeatherForecast({
 
   const data = await response.json();
   return mapForecastResponse(data);
+}
+
+export async function fetchLocationsAutoComplete(
+  query: string
+): Promise<Location[]> {
+  const response = await fetch(
+    `${BASE_URL}/search.json?key=${API_KEY}&q=${query}`
+  );
+  const data = await response.json();
+  return data;
 }

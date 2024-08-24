@@ -1,3 +1,5 @@
+import { LocationError } from "./types";
+
 export const ErrorDenied: LocationError = {
   error: "denied",
   errorCode: 1,
