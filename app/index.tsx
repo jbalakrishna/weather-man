@@ -9,7 +9,7 @@ export default function App() {
   const store = useWeatherStore();
 
   return (
-    <View className="flex-1 bg-white dark:bg-black">
+    <View className="flex-1">
       <LocationDetector />
       {store.weather && <WeatherContainer data={store.weather} />}
     </View>

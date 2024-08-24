@@ -44,7 +44,10 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
   return (
     <Fragment>
       <ScrollView>
-        <View className="flex-1 gap-7 px-8 py-8 bg-white">
+        <View
+          className="flex-1 gap-7 px-8 py-8 bg-white"
+          style={{ backgroundColor: "#fff" }}
+        >
           <View className="flex-1 flex-row justify-between">
             <TouchableOpacity onPress={handleLocationModal}>
               <View className="flex-row border-2 rounded-full gap-3 border-slate-400 py-3 px-6 border-radius-8">
