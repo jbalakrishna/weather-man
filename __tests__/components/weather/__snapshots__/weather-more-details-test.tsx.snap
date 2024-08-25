@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`weather details  weather details with static details renders correctly 1`] = `
+[
+  <Text
+    className="font-bold text-2xl text-slate-700"
+  >
+    Details
+  </Text>,
+  <View
+    className="flex-1 gap-8 px-5 py-8 bg-slate-100 rounded-xl"
+  >
+    <View
+      className="flex-1 flex-row gap-4 justify-between"
+    >
+      <Text
+        className="font-semibold text-slate-400 text-xl"
+      >
+        Humidity  
+        <Text
+          className="text-2xl font-bold text-slate-600"
+        >
+          22%
+        </Text>
+      </Text>
+      <Text
+        className="font-semibold text-slate-400 text-xl"
+      >
+        Dew  
+        <Text
+          className="text-2xl font-bold text-slate-600"
+        >
+          6
+        </Text>
+      </Text>
+    </View>
+    <View
+      className="flex-1 flex-row justify-between"
+    >
+      <Text
+        className="font-semibold text-slate-400 text-xl"
+      >
+        Wind  
+        <Text
+          className="text-2xl font-bold text-slate-600"
+        >
+          20
+        </Text>
+      </Text>
+      <Text
+        className="font-semibold text-slate-400 text-xl"
+      >
+        Wind chill  
+        <Text
+          className="text-2xl font-bold text-slate-600"
+        >
+          10
+        </Text>
+      </Text>
+    </View>
+    <View
+      className="flex-1 flex-row justify-end"
+    >
+      <Text
+        className="font-semibold text-slate-400 text-xl"
+      >
+        Clouds  
+        <Text
+          className="text-2xl font-bold text-slate-600"
+        >
+          5%
+        </Text>
+      </Text>
+    </View>
+  </View>,
+]
+`;

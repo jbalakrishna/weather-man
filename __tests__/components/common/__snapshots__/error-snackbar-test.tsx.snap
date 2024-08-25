@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorSnackbar 1 error mode should render correctly 1`] = `
+<View
+  className="bg-red-600 px-8 justify-center align-center"
+  collapsable={false}
+  style={
+    {
+      "height": 0,
+    }
+  }
+>
+  <Text
+    className="text-slate-100 font-semibold"
+  >
+    There was a problem with your last request. 
+Please try again after some time.
+  </Text>
+</View>
+`;
+
+exports[`ErrorSnackbar 2 offline mode should correctly 1`] = `
+<View
+  className="bg-slate-200 px-8 justify-center align-center"
+  collapsable={false}
+  style={
+    {
+      "height": 0,
+    }
+  }
+>
+  <Text
+    className="text-slate-500 font-semibold"
+  >
+    Looks like you're offline!
+You can still explore but information maybe outdated
+  </Text>
+</View>
+`;

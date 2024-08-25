@@ -13,7 +13,9 @@ const ConditionCard = ({
   feelsLike,
   isDay,
 }: TConditionCardProps) => {
-  const bgColor = isDay ? condition.dayColors?.[0] : condition.nightColors?.[0];
+  const bgColor =
+    (isDay ? condition.dayColors?.[0] : condition.nightColors?.[0]) ||
+    "#E2E8F0";
   return (
     <View
       className="flex-row justify-between gap-4 py-4  rounded-xl drop-shadow"
