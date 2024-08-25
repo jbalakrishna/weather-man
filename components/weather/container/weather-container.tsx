@@ -1,4 +1,5 @@
 import ErrorSnackbar from "@/components/common/error-snackbar";
+import useIsOffline from "@/components/common/hooks/useIsOffline";
 import LocationSelectionModal from "@/components/location/location-selection-modal";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { throttle } from "lodash";
@@ -17,15 +18,20 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
     data: { current, forecast, location },
   } = props;
   const scrollRef = useRef<ScrollView>(null);
+  const isOffline = useIsOffline();
   const [scrollToX, setScrollToX] = useState<number>(-1);
   const [locationModalVisible, setLocationModalVisible] =
     useState<boolean>(false);
   const store = useWeatherStore();
   const handleLocationModal = () => {
+    if (isOffline) return;
+    store.clearError();
     setLocationModalVisible(true);
   };
 
   const handleRefresh = async () => {
+    if (isOffline) return;
+    store.clearError();
     await store.fetchWeather();
   };
 

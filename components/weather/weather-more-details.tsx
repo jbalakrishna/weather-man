@@ -21,20 +21,8 @@ const WeatherMoreDetails = (props: TWeatherMoreDetailsProps) => {
   return (
     <Fragment>
       <Text className="font-bold text-2xl text-slate-700">Details</Text>
-      <View className="flex-1 gap-8 px-8 py-8 bg-slate-100 rounded-xl">
+      <View className="flex-1 gap-8 px-5 py-8 bg-slate-100 rounded-xl">
         <View className="flex-1 flex-row gap-4 justify-between">
-          {/* <Text className={headingTextClasses}>
-            {"Humidity  "}
-            <Text className="text-2xl font-bold text-slate-700">
-              {props.humidity}%
-            </Text>
-          </Text>
-          <Text className={headingTextClasses}>
-            {"Dew  "}
-            <Text className="text-2xl font-bold text-slate-700">
-              {props.dewpoint}
-            </Text>
-          </Text> */}
           <TextAndSubText text={`${props.humidity}%`} subText={"Humidity  "} />
           <TextAndSubText text={`${props.dewpoint}`} subText={"Dew  "} />
         </View>

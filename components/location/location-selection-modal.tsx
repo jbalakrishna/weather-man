@@ -182,9 +182,13 @@ export default function LocationSelectionModal({
             }}
             editable
           />
-          {loading && <Text className="mt-8 px-4">Fetching...</Text>}
+          {loading && (
+            <Text className="text-slate-400mt-8 px-4">Fetching...</Text>
+          )}
           {store.error && (
-            <Text className="mt-8 px-4">{store.error.message}</Text>
+            <Text className="text-red-500 mt-8 px-4">
+              {store.error.message}
+            </Text>
           )}
 
           {autocompleteLocations.length > 0 && (

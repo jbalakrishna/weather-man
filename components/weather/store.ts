@@ -45,7 +45,10 @@ const useWeatherStore = create<WeatherStore>(
         try {
           const payload = freshLocation || get().location;
 
-          if (!payload) return;
+          if (!payload) {
+            set({ error: genericError("No location found"), loading: false });
+            return;
+          }
           const weatherForeCastResponse = await fetchWeatherForecast(payload);
 
           set({ weather: weatherForeCastResponse, loading: false });
