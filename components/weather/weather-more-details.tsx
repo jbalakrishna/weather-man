@@ -34,7 +34,7 @@ const WeatherMoreDetails = ({ current }: TWeatherMoreDetailsProps) => {
   } ${tempSuffix}`;
 
   const [showAqi, setShowAqi] = useState(false);
-  const animatedVal = useRef(new Animated.Value(400)).current;
+  const animatedVal = useRef(new Animated.Value(0)).current;
 
   const handleShowAqi = () => {
     const toAnimatedVal = showAqi ? 0 : 1;
