@@ -33,7 +33,6 @@ exports[`ErrorSnackbar 2 offline mode should correctly 1`] = `
     className="text-slate-500 font-semibold"
   >
     Looks like you're offline!
-You can still explore but information maybe outdated
   </Text>
 </View>
 `;

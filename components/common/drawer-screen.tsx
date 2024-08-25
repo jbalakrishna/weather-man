@@ -37,6 +37,10 @@ const DrawerScreen = (props: any) => {
     );
   };
 
+  const handleOfflineModeChange = () => {
+    settingStore.setOfflineMode(!settingStore.offlineMode);
+  };
+
   return (
     <View className="flex-1 py-12 bg-slate-100">
       <DrawerContentScrollView {...props}>
@@ -52,6 +56,11 @@ const DrawerScreen = (props: any) => {
               handleSwitchToggle={handleUnitsChange}
               enabled={settingStore.units === "imperial"}
               text={"Use Imperial Units\n(Fahrenheit, mph)"}
+            />
+            <SwitchItem
+              handleSwitchToggle={handleOfflineModeChange}
+              enabled={settingStore.offlineMode}
+              text={"Offline mode"}
             />
           </View>
         </View>

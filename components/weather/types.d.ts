@@ -44,6 +44,7 @@ type HourWeather = {
   time_epoch: number;
   timeAgo: string;
   timeHour: number;
+  prettyTimeHour: string;
   chance_of_rain: number;
   chance_of_snow: number;
   cloud: number;

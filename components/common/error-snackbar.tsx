@@ -56,9 +56,7 @@ const ErrorSnackbar = ({ error }: any) => {
         </Text>
       ) : (
         <Text className="text-slate-500 font-semibold">
-          {
-            "Looks like you're offline!\nYou can still explore but information maybe outdated"
-          }
+          {"Looks like you're offline!"}
         </Text>
       )}
     </Animated.View>

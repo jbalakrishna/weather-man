@@ -56,6 +56,7 @@ export const mapHoursData = (forecast: any, location: any): HourWeather[] => {
       .tz(location.tz_id);
     hourLevelData.timeAgo = hourMomentTime.fromNow();
     hourLevelData.timeHour = hourMomentTime.hour();
+    hourLevelData.prettyTimeHour = hourMomentTime.format("hh A");
     return hourLevelData;
   });
 };

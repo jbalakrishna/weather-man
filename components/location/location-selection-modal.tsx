@@ -123,19 +123,13 @@ export default function LocationSelectionModal({
     await store.fetchWeather();
     showToast();
     clearStates();
-    handleClose();
+    onClose();
   };
 
   const handleClose = () => {
-    Animated.timing(pan, {
-      toValue: 500,
-      duration: 500,
-      useNativeDriver: false,
-    }).start(() => {
-      clearStates();
-      onClose();
-      pan.setValue(300);
-    });
+    clearStates();
+    onClose();
+    pan.setValue(300);
   };
 
   const handleQueryChange = async (query: string) => {
@@ -154,7 +148,7 @@ export default function LocationSelectionModal({
   return modalVisible ? (
     <Animated.View
       style={{ transform: [{ translateY: pan }] }}
-      className="absolute rounded-2xl shadow-black bottom-0 left-0 right-0 top-0 flex-1 bg-blue-100 shadow-2xl  px-4 py-6"
+      className="absolute rounded-2xl shadow-black bottom-0 left-0 right-0 top-0 flex-1 bg-slate-100 shadow-2xl  px-4 py-6"
       {...panResponder.panHandlers}
     >
       <ScrollView>
@@ -212,8 +206,10 @@ export default function LocationSelectionModal({
           <TouchableOpacity className="py-8" onPressOut={fetchLocation}>
             <View>
               <View className="flex-row gap-2 align-center rounded-full px-4 py-2">
-                <Ionicons name="location-outline" size={18} color="blue" />
-                <Text>Use Current Location Instead</Text>
+                <Ionicons name="location-outline" size={18} color="stone" />
+                <Text className="font-medium  text-stone-700 pt-0.5">
+                  Use Current Location Instead
+                </Text>
               </View>
             </View>
           </TouchableOpacity>
