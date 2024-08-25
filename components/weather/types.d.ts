@@ -6,6 +6,11 @@ type WeatherCondition = {
   nightColors?: string[];
 };
 
+type AqiInfo = {
+  label: string;
+  color: string;
+};
+
 type CurrentWeather = {
   last_updated: string;
   last_updated_epoch: number;
@@ -25,6 +30,17 @@ type CurrentWeather = {
   temp_c: number;
   wind_kph: number;
   windchill_c: number;
+  air_quality: {
+    co: number;
+    no2: number;
+    o3: number;
+    so2: number;
+    pm2_5: number;
+    pm10: number;
+    "us-epa-index": number;
+    indexInfo: AqiInfo;
+    "gb-defra-index": number;
+  };
 };
 
 type DayWeather = {
@@ -75,6 +91,7 @@ type CurrentWeatherAttributes = {
   is_day: string;
   wind: string;
   windchill: string;
+  air_quality: string;
 };
 
 type DayWeatherAttributes = {

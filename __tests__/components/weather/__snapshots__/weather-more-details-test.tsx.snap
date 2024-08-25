@@ -8,7 +8,7 @@ exports[`weather details  weather details with static details renders correctly 
     Details
   </Text>,
   <View
-    className="flex-1 gap-8 px-5 py-8 bg-slate-100 rounded-xl"
+    className="flex-1 gap-8 px-5 pt-8 bg-slate-100 rounded-xl"
   >
     <View
       className="flex-1 flex-row gap-4 justify-between"
@@ -59,18 +59,145 @@ exports[`weather details  weather details with static details renders correctly 
       </Text>
     </View>
     <View
-      className="flex-1 flex-row justify-end"
+      className="flex-1 flex-row justify-between"
     >
-      <Text
-        className="font-semibold text-slate-400 text-xl"
+      <View
+        className="py-2"
       >
-        Clouds  
         <Text
-          className="text-2xl font-bold text-slate-600"
+          className="font-semibold text-slate-400 text-xl"
         >
-          20%
+          Clouds  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            20%
+          </Text>
         </Text>
-      </Text>
+      </View>
+      <RNGestureHandlerButton
+        collapsable={false}
+        delayLongPress={600}
+        enabled={true}
+        exclusive={true}
+        handlerTag={1}
+        handlerType="NativeViewGestureHandler"
+        onGestureEvent={[Function]}
+        onGestureHandlerEvent={[Function]}
+        onGestureHandlerStateChange={[Function]}
+        onHandlerStateChange={[Function]}
+        rippleColor={0}
+        touchSoundDisabled={false}
+      >
+        <View
+          accessible={true}
+          collapsable={false}
+          style={
+            {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            className="flex-row gap-2 py-2"
+          >
+            <Text
+              className="text-2xl font-bold text-slate-600"
+            >
+              AQI
+            </Text>
+            <Text />
+          </View>
+        </View>
+      </RNGestureHandlerButton>
+    </View>
+    <View
+      collapsable={false}
+      style={
+        {
+          "height": 88000,
+        }
+      }
+    >
+      <View
+        className="flex-1 gap-2"
+      >
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          General Index  
+          <Text
+            className="text-2xl font-bold"
+            style={
+              {
+                "color": "#00E400",
+              }
+            }
+          >
+            Good
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          Carbon Monoxide (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            191.9
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          Ozone (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            32.2
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          Nitrogen dioxide (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            0.6
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          Sulphur dioxide (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            0.8
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          PM2.5 (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            2.7
+          </Text>
+        </Text>
+        <Text
+          className="font-semibold text-slate-400 text-xl"
+        >
+          PM10 (μg/m3)  
+          <Text
+            className="text-2xl font-bold text-slate-600"
+          >
+            5.5
+          </Text>
+        </Text>
+      </View>
     </View>
   </View>,
 ]

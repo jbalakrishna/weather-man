@@ -22,6 +22,25 @@ export const mapForecastResponse = (data: any): WeatherData => {
   };
 };
 
+const getAqiInfo = (aqi: number): AqiInfo => {
+  switch (aqi) {
+    case 1:
+      return { label: "Good", color: "#00E400" };
+    case 2:
+      return { label: "Moderate", color: "#FFFF00" };
+    case 3:
+      return { label: "Unhealthy for Sensitive Groups", color: "#FF7E00" };
+    case 4:
+      return { label: "Unhealthy", color: "#FF0000" };
+    case 5:
+      return { label: "Very Unhealthy", color: "#8F3F97" };
+    case 6:
+      return { label: "Hazardous", color: "#7E0023" };
+    default:
+      return { label: "", color: "" };
+  }
+};
+
 export const mapCurrentData = (current: any, location: any): CurrentWeather => {
   const currentData = pick(current, [
     ...values(CurrentWeatherAttributesImperial),
@@ -41,6 +60,10 @@ export const mapCurrentData = (current: any, location: any): CurrentWeather => {
       ConditionAttributesColorData,
       (data) => data.code == current.condition.code
     ),
+  };
+  currentData.air_quality = {
+    ...currentData.air_quality,
+    indexInfo: getAqiInfo(current.air_quality["us-epa-index"]),
   };
   return currentData;
 };

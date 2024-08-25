@@ -43,6 +43,16 @@ const mockForecastResponse = {
     uv: 6.0,
     gust_mph: 8.7,
     gust_kph: 14.0,
+    air_quality: {
+      co: 191.9,
+      no2: 0.6,
+      o3: 32.2,
+      so2: 0.8,
+      pm2_5: 2.7,
+      pm10: 5.5,
+      "us-epa-index": 1,
+      "gb-defra-index": 1,
+    },
   },
   forecast: {
     forecastday: [

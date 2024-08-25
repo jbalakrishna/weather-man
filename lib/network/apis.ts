@@ -25,7 +25,7 @@ export async function fetchWeatherForecast({
   longitude,
 }: LocationRequest): Promise<WeatherData> {
   const response = await fetch(
-    `${BASE_URL}/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=7`
+    `${BASE_URL}/forecast.json?key=${API_KEY}&q=${latitude},${longitude}&days=7&aqi=yes`
   );
 
   const data = await response.json();

@@ -10,6 +10,7 @@ const CurrentWeatherAttributesImperial: CurrentWeatherAttributes = {
   windchill: "windchill_f",
   time: "last_updated",
   time_epoch: "last_updated_epoch",
+  air_quality: "air_quality",
 };
 
 const CurrentWeatherAttributesUniversal: CurrentWeatherAttributes = {
@@ -24,6 +25,7 @@ const CurrentWeatherAttributesUniversal: CurrentWeatherAttributes = {
   windchill: "windchill_c",
   time: "last_updated",
   time_epoch: "last_updated_epoch",
+  air_quality: "air_quality",
 };
 
 const DayWeatherAttributesImperial: DayWeatherAttributes = {
