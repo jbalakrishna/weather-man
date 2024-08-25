@@ -12,6 +12,17 @@ import moment from "moment-timezone";
 
 export const mapForecastResponse = (data: any): WeatherData => {
   const { current, forecast, location } = data;
+  return {
+    location,
+    current: mapCurrentData(current, location),
+    forecast: {
+      day: mapDaysData(forecast, location),
+      hour: mapHoursData(forecast, location),
+    },
+  };
+};
+
+export const mapCurrentData = (current: any, location: any): CurrentWeather => {
   const currentData = pick(current, [
     ...values(CurrentWeatherAttributesImperial),
     ...values(CurrentWeatherAttributesUniversal),
@@ -22,7 +33,6 @@ export const mapForecastResponse = (data: any): WeatherData => {
     (momentTime.minutes() >= 40 ? momentTime.hour() + 1 : momentTime.hour()) %
     24;
 
-  currentData.timeHour = 11;
   currentData.condition = {
     ...currentData.condition,
     icon: `https:${current.condition.icon}`.replace("64x64", "128x128"),
@@ -32,36 +42,33 @@ export const mapForecastResponse = (data: any): WeatherData => {
       (data) => data.code == current.condition.code
     ),
   };
+  return currentData;
+};
 
-  const hoursData = get(forecast, "forecastday.0.hour", []).map(
-    (hourItem: any) => {
-      const hourLevelData = pick(hourItem, [
-        ...values(HourWeatherAttributesImperial),
-        ...values(HourWeatherAttributesUniversal),
-      ]);
-      const hourMomentTime = moment
-        .unix(hourLevelData.time_epoch)
-        .tz(location.tz_id);
-      hourLevelData.timeAgo = hourMomentTime.fromNow();
-      hourLevelData.timeHour = hourMomentTime.hour();
-      return hourLevelData;
-    }
-  );
-  return {
-    location,
-    current: currentData,
-    forecast: {
-      day: get(forecast, "forecastday").map((dayItem: any) => {
-        const dayLevelData = pick(dayItem.day, [
-          ...values(DayWeatherAttributesImperial),
-          ...values(DayWeatherAttributesUniversal),
-        ]) as DayWeather;
+export const mapHoursData = (forecast: any, location: any): HourWeather[] => {
+  return get(forecast, "forecastday.0.hour", []).map((hourItem: any) => {
+    const hourLevelData = pick(hourItem, [
+      ...values(HourWeatherAttributesImperial),
+      ...values(HourWeatherAttributesUniversal),
+    ]);
+    const hourMomentTime = moment
+      .unix(hourLevelData.time_epoch)
+      .tz(location.tz_id);
+    hourLevelData.timeAgo = hourMomentTime.fromNow();
+    hourLevelData.timeHour = hourMomentTime.hour();
+    return hourLevelData;
+  });
+};
 
-        const dayMoment = moment.unix(dayItem.date_epoch).tz(location.tz_id);
-        dayLevelData.dayOfWeek = dayMoment.format("dddd");
-        return dayLevelData;
-      }),
-      hour: hoursData,
-    },
-  };
+export const mapDaysData = (forecast: any, location: any): DayWeather[] => {
+  return get(forecast, "forecastday").map((dayItem: any) => {
+    const dayLevelData = pick(dayItem.day, [
+      ...values(DayWeatherAttributesImperial),
+      ...values(DayWeatherAttributesUniversal),
+    ]) as DayWeather;
+
+    const dayMoment = moment.unix(dayItem.date_epoch).tz(location.tz_id);
+    dayLevelData.dayOfWeek = dayMoment.format("dddd");
+    return dayLevelData;
+  });
 };
