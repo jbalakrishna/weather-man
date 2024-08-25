@@ -16,8 +16,8 @@ const ErrorSnackbar = ({ error }: any) => {
         duration: 200,
         useNativeDriver: false,
       }).start();
-      if (error) {
-        delay(() => {
+      delay(
+        () => {
           Animated.timing(height, {
             toValue: 0,
             duration: 200,
@@ -25,8 +25,9 @@ const ErrorSnackbar = ({ error }: any) => {
           }).start(() => {
             height.setValue(0);
           });
-        }, 5000);
-      }
+        },
+        showOfflineMode ? 5000 : 10000
+      );
       return;
     }
 

@@ -1,4 +1,7 @@
-import { LocationErrorGeneric } from "@/components/common/errors";
+import {
+  LocationErrorDenied,
+  LocationErrorGeneric,
+} from "@/components/common/errors";
 import { fetchLocationsAutoComplete } from "@/lib/network/apis";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Location from "expo-location";
@@ -74,22 +77,22 @@ export default function LocationSelectionModal({
 
     try {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      let location = await Location.getCurrentPositionAsync({});
       if (status !== "granted") {
-        store.setError(LocationErrorGeneric);
+        store.setError(LocationErrorDenied);
       } else {
+        let location = await Location.getCurrentPositionAsync({});
         store.setLocation({
           longitude: location.coords.longitude,
           latitude: location.coords.latitude,
         });
         store.fetchWeather();
+        showToast();
       }
     } catch (error) {
       store.setError(LocationErrorGeneric);
     } finally {
       setLoading(false);
       clearStates();
-      showToast();
       onClose();
     }
   };

@@ -30,7 +30,7 @@ const ErrorScreen = ({ error, handleRetry }: TErrorScreenProps) => {
 
   return error ? (
     <Animated.View
-      className="absolute top-0 bottom-0 left-0 right-0 bg-slate-100 opacity-75 items-center justify-center"
+      className="flex-1 bg-slate-100 opacity-75 items-center justify-center"
       style={{ opacity }}
     >
       <View className="flex-1 gap-4 justify-center align-center">
