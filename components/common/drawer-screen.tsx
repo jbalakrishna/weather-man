@@ -1,7 +1,4 @@
-import {
-  DrawerContentScrollView,
-  DrawerItemList,
-} from "@react-navigation/drawer";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
 import { Switch, Text, View } from "react-native";
 import useSettingsStore from "./settings/store";
 
@@ -45,9 +42,6 @@ const DrawerScreen = (props: any) => {
     <View className="flex-1 py-12 bg-slate-100">
       <DrawerContentScrollView {...props}>
         <View className="flex-1 gap-12 ">
-          <View className="flex-1 bg-slate-100">
-            <DrawerItemList {...props} />
-          </View>
           <View className="flex-1 px-4 pt-4 gap-4 bg-slate-100 border-t-2 border-slate-200 ">
             <Text className="font-bold text-xl text-slate-600">
               Preferences
