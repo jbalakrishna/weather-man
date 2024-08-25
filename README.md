@@ -5,49 +5,68 @@ Weather man is your everyday go to app for learning about current weather precis
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
+## Pre-requesites
+
+1. Java Development Kit
+2. JRE
+3. node latest version
+4. npm, npx latest version
+
 ## Get started
 
 1. Install dependencies
 
    ```bash
-   npm install
+   npx npm install
    ```
 
-2. Start the app
+2. Start the app for android
 
    ```bash
-    npx expo start
+    npx expo run:andriod
+   ```
+3. Connect the emulator or device via usb and make sure internet is available the build will automatically be run with latest bundle
+
+4. To build a local android APK you can use eas build (but requires expo vendor login to linked to local)
+   Below command created local development apk
+
+   ```bash
+   eas build -p android --profile preview --local
    ```
 
-In the output, you'll find options to open the app in a
+## App information
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Weather apps providing weather and air quality information based on current location and location search options as well.
+Information includes current temperature, humidity, dew, air quality etc. as provided from https://www.weatherapi.com/docs/ open source APIs.
 
-## Get a fresh project
+### Architecture
 
-When you're ready, run:
+The app is built using expo + react native. expo is the official framework recommended by Facebook for building hybrid apps as of 2024.
+Expo provides support for all the libraries and capabilities of base react native, iOS, android, and web platforms.
 
-```bash
-npm run reset-project
-```
+1. Navigation: expo-router is used. it is leveraging file + directory-based routing where the file system definitions determine the screens. Here I have just used a simple drawer navigation with some settings in a custom drawer screen.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Design: using nativewind - a wrapper around tailwindcss which provides the same capabilities as tailwind but for multiplatform. development is much easier to start with since most of the styles are predefined classes, which helps in easily learning about the classes and using it. 
 
-## Learn more
+3. State management - using Zustand which is lightweight state management lib similar to redux but abstracts most of the boilerplate for developers. also used AsyncStorage (android) for caching the last updated data.
 
-To learn more about developing your project with Expo, look at the following resources:
+4. API -> using inbuilt fetch API which abstracts the corresponding native layer of network calls and provides results. Also added mappers to transform the response to the application needs.
+added loading and error states for specific use cases.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+5. Tests -> using jest for testing UI components with snapshot testing. mapper/transformers - added unit tests
 
-## Join the community
+6. Other inclusions
+    -> Add Chart lib to show an hourly timeline of temperature for the current day
+    -> Add settings option to switch between Celsius, kph units / Fahrenheit, mph units
+    -> Add settings option to browse app in offline-only mode
 
-Join our community of developers creating universal apps.
+### Assumptions
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+I have worked in both Android and web platforms so starting an app from scratch will really determine how stable the app is and how quickly development iteration and bug fixes can be done on top of that. With this in mind, I have tried to make sure that this app can be scaled production-ready in the future by taking time to set up the basics and skeleton of the app.
+
+### Limitations/misses
+
+1. Focused only on Android as a target platform due to time constraints. Ios and web can be supported if needed with minimal changes, Mainly limited by the developer lock-ins of apple developer platform and assumed that web is not really in scope.
+2. Tried to implement dark theme but faced issue due to nativewind compatibilty issues and the time to fix will be dragged a bit. Granted this can be fixed with time.
+3. Storing secrets like API keys needs to be present in some config file. right now its hardcoded in the app due to eas build issues and expo vendor lock-in preventing me from building an Android app in the traditional way to APK builds.
