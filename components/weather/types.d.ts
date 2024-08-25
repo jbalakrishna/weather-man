@@ -36,6 +36,7 @@ type DayWeather = {
   maxtemp_f: number;
   maxtemp_c: number;
   dayOfWeek: string;
+  date: string;
 };
 
 type HourWeather = {

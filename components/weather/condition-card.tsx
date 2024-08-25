@@ -1,21 +1,24 @@
 import { Image, Text, View } from "react-native";
+import useSettingsStore from "../common/settings/store";
 
 type TConditionCardProps = {
-  condition: WeatherCondition;
-  temp: string;
-  feelsLike: string;
-  isDay: boolean;
+  current: WeatherData["current"];
 };
 
-const ConditionCard = ({
-  condition,
-  temp,
-  feelsLike,
-  isDay,
-}: TConditionCardProps) => {
+const ConditionCard = ({ current }: TConditionCardProps) => {
   const bgColor =
-    (isDay ? condition.dayColors?.[0] : condition.nightColors?.[0]) ||
-    "#E2E8F0";
+    (current.is_day
+      ? current.condition.dayColors?.[0]
+      : current.condition.nightColors?.[0]) || "#E2E8F0";
+  const settingsStore = useSettingsStore();
+
+  const isMetric = settingsStore.getUnits() === "metric";
+  const tempSuffix = settingsStore.getTemperatureSuffix();
+  const temp = `${isMetric ? current.temp_c : current.temp_f} ${tempSuffix}`;
+  const feelsLike = `${
+    isMetric ? current.feelslike_c : current.feelslike_f
+  } ${tempSuffix}`;
+
   return (
     <View
       className="flex-row justify-between gap-4 py-4  rounded-xl drop-shadow"
@@ -25,12 +28,12 @@ const ConditionCard = ({
     >
       <View className="flex-1 flex-col gap-2">
         <Image
-          source={{ uri: condition.icon }}
+          source={{ uri: current.condition.icon }}
           resizeMode="contain"
           className="h-40"
         />
         <Text className="text-center font-bold color-slate-600 text-xl px-4 pb-4">
-          {condition.text}
+          {current.condition.text}
         </Text>
       </View>
 
@@ -48,7 +51,7 @@ const ConditionCard = ({
         </View>
       </View>
       <Text className="absolute bottom-0 right-0 text-right font-bold color-slate-600 text-xl mb-8 mr-8">
-        {isDay ? "Day" : "Night"}
+        {current.is_day ? "Day" : "Night"}
       </Text>
     </View>
   );

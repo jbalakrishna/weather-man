@@ -33,7 +33,7 @@ exports[`Condition Card Day day mode should render correctly 1`] = `
     <Text
       className="text-right font-bold color-slate-600 text-4xl"
     >
-      23.4
+      20 °C
     </Text>
     <View>
       <Text
@@ -44,7 +44,7 @@ exports[`Condition Card Day day mode should render correctly 1`] = `
       <Text
         className="text-right font-bold color-slate-600 text-2xl"
       >
-        22.4
+        20 °C
       </Text>
     </View>
   </View>
@@ -89,7 +89,7 @@ exports[`Condition Card Night night mode should render correctly 1`] = `
     <Text
       className="text-right font-bold color-slate-600 text-4xl"
     >
-      23.4
+      20 °C
     </Text>
     <View>
       <Text
@@ -100,7 +100,7 @@ exports[`Condition Card Night night mode should render correctly 1`] = `
       <Text
         className="text-right font-bold color-slate-600 text-2xl"
       >
-        22.4
+        20 °C
       </Text>
     </View>
   </View>
@@ -145,7 +145,7 @@ exports[`Condition Card without colors without colors should render correctly 1`
     <Text
       className="text-right font-bold color-slate-600 text-4xl"
     >
-      23.4
+      20 °C
     </Text>
     <View>
       <Text
@@ -156,14 +156,14 @@ exports[`Condition Card without colors without colors should render correctly 1`
       <Text
         className="text-right font-bold color-slate-600 text-2xl"
       >
-        22.4
+        20 °C
       </Text>
     </View>
   </View>
   <Text
     className="absolute bottom-0 right-0 text-right font-bold color-slate-600 text-xl mb-8 mr-8"
   >
-    Night
+    Day
   </Text>
 </View>
 `;
@@ -201,7 +201,7 @@ exports[`Condition Card without icon without icon should render correctly 1`] = 
     <Text
       className="text-right font-bold color-slate-600 text-4xl"
     >
-      23.4
+      20 °C
     </Text>
     <View>
       <Text
@@ -212,14 +212,14 @@ exports[`Condition Card without icon without icon should render correctly 1`] = 
       <Text
         className="text-right font-bold color-slate-600 text-2xl"
       >
-        22.4
+        20 °C
       </Text>
     </View>
   </View>
   <Text
     className="absolute bottom-0 right-0 text-right font-bold color-slate-600 text-xl mb-8 mr-8"
   >
-    Night
+    Day
   </Text>
 </View>
 `;

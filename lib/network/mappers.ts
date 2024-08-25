@@ -68,7 +68,16 @@ export const mapDaysData = (forecast: any, location: any): DayWeather[] => {
     ]) as DayWeather;
 
     const dayMoment = moment.unix(dayItem.date_epoch).tz(location.tz_id);
+    dayLevelData.condition = {
+      ...dayLevelData.condition,
+      icon: `https:${dayLevelData.condition.icon}`.replace("64x64", "128x128"),
+      ...find(
+        ConditionAttributesColorData,
+        (data) => data.code == dayLevelData.condition.code
+      ),
+    };
     dayLevelData.dayOfWeek = dayMoment.format("dddd");
+    dayLevelData.date = dayMoment.format("DD MMM YYYY");
     return dayLevelData;
   });
 };

@@ -20,7 +20,7 @@ exports[`weather details  weather details with static details renders correctly 
         <Text
           className="text-2xl font-bold text-slate-600"
         >
-          22%
+          50%
         </Text>
       </Text>
       <Text
@@ -30,7 +30,7 @@ exports[`weather details  weather details with static details renders correctly 
         <Text
           className="text-2xl font-bold text-slate-600"
         >
-          6
+          10 °C
         </Text>
       </Text>
     </View>
@@ -44,7 +44,7 @@ exports[`weather details  weather details with static details renders correctly 
         <Text
           className="text-2xl font-bold text-slate-600"
         >
-          20
+          10 kmph
         </Text>
       </Text>
       <Text
@@ -54,7 +54,7 @@ exports[`weather details  weather details with static details renders correctly 
         <Text
           className="text-2xl font-bold text-slate-600"
         >
-          10
+          10 °C
         </Text>
       </Text>
     </View>
@@ -68,7 +68,7 @@ exports[`weather details  weather details with static details renders correctly 
         <Text
           className="text-2xl font-bold text-slate-600"
         >
-          5%
+          20%
         </Text>
       </Text>
     </View>

@@ -69,7 +69,6 @@ describe("mapHoursData test", () => {
 
   const hourResult = mapHoursData(mockForecastInput, mockLocation)[0];
 
-  console.log(hourResult);
   it("should pick the correct attributes from the current data", () => {
     [
       ...Object.values(HourWeatherAttributesImperial),

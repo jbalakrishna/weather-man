@@ -67,7 +67,6 @@ describe("mapDaysData test", () => {
 
   const dayResult = mapDaysData(mockForecastInput, mockLocation)[0];
 
-  console.log(dayResult);
   it("should pick the correct attributes from the current data", () => {
     [
       ...Object.values(DayWeatherAttributesImperial),
