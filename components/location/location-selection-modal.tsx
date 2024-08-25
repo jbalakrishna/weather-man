@@ -1,3 +1,4 @@
+import { LocationErrorGeneric } from "@/components/common/errors";
 import { fetchLocationsAutoComplete } from "@/lib/network/apis";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import * as Location from "expo-location";
@@ -14,8 +15,6 @@ import {
   View,
 } from "react-native";
 import useWeatherStore from "../weather/store";
-import { ErrorDenied, ErrorGeneric } from "./constants";
-import { LocationError } from "./types";
 
 export default function LocationSelectionModal({
   locationText,
@@ -29,12 +28,10 @@ export default function LocationSelectionModal({
   const pan = useRef(new Animated.Value(300)).current;
   const inputRef = useRef<TextInput>(null);
 
-  const [error, setError] = useState<LocationError | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [query, setQuery] = useState("");
   const [autocompleteLocations, setAutocompleteLocations] = useState<any[]>([]);
   const store = useWeatherStore();
-  const { location } = useWeatherStore();
 
   const panResponder = useRef(
     PanResponder.create({
@@ -79,7 +76,7 @@ export default function LocationSelectionModal({
       let { status } = await Location.requestForegroundPermissionsAsync();
       let location = await Location.getCurrentPositionAsync({});
       if (status !== "granted") {
-        setError(ErrorDenied);
+        store.setError(LocationErrorGeneric);
       } else {
         store.setLocation({
           longitude: location.coords.longitude,
@@ -88,7 +85,7 @@ export default function LocationSelectionModal({
         store.fetchWeather();
       }
     } catch (error) {
-      setError(ErrorGeneric);
+      store.setError(LocationErrorGeneric);
     } finally {
       setLoading(false);
       clearStates();
@@ -112,7 +109,7 @@ export default function LocationSelectionModal({
       const locations = await fetchLocationsAutoComplete(query);
       setAutocompleteLocations(locations);
     } catch (error) {
-      setError(ErrorGeneric);
+      store.setError(LocationErrorGeneric);
     } finally {
       setLoading(false);
     }
@@ -186,7 +183,9 @@ export default function LocationSelectionModal({
             editable
           />
           {loading && <Text className="mt-8 px-4">Fetching...</Text>}
-          {error && <Text className="mt-8 px-4">{error.message}</Text>}
+          {store.error && (
+            <Text className="mt-8 px-4">{store.error.message}</Text>
+          )}
 
           {autocompleteLocations.length > 0 && (
             <View className="flex-1">

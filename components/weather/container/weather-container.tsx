@@ -1,3 +1,4 @@
+import ErrorSnackbar from "@/components/common/error-snackbar";
 import LocationSelectionModal from "@/components/location/location-selection-modal";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { throttle } from "lodash";
@@ -15,7 +16,6 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
   const {
     data: { current, forecast, location },
   } = props;
-  console.log("WEATHER_MAAAN", props.data);
   const scrollRef = useRef<ScrollView>(null);
   const [scrollToX, setScrollToX] = useState<number>(-1);
   const [locationModalVisible, setLocationModalVisible] =
@@ -44,6 +44,7 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
   return (
     <Fragment>
       <ScrollView>
+        <ErrorSnackbar error={store.error} />
         <View
           className="flex-1 gap-7 px-8 py-8 bg-white"
           style={{ backgroundColor: "#fff" }}
