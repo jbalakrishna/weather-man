@@ -10,6 +10,9 @@
     "preview": {
       "android": {
         "gradleCommand": ":app:assembleRelease"
+      },
+      "ios": {
+        "simulator": true
       }
     },
     "production": {}

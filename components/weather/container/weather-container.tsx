@@ -18,7 +18,7 @@ export default function WeatherContainer(props: TWeatherContainerProps) {
 
   return (
     <Fragment>
-      <ScrollView className="flex-1">
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         <View
           className="flex-1 gap-7 px-4 pt-4 pb-20 bg-white dark:bg-slate-900"
           style={{ backgroundColor: "#fff" }}
